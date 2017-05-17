@@ -14,7 +14,7 @@ kramdown:
   - jekyll-gist
 
 
-baseurl: "http://jkernion-indeed.github.io/proctor"
+baseurl: "https://jkernion-indeed.github.io/proctor"
 # jekyll serve --watch --baseurl=
 
 
