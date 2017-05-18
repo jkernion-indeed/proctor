@@ -92,8 +92,7 @@ The result is a single test `bgcolortst` with five buckets: `inactive, altcolor1
     </build>
 ```
 
-2. To generate the Proctor convenience classes, run `mvn proctor:generate`, which creates `ExampleGroups.java` and `ExampleGroupsManager.java`
-in `target/generated-sources/proctor/org/example/proctor/`.
+2. To generate the Proctor convenience classes, run `mvn proctor:generate`, which creates `ExampleGroups.java` and `ExampleGroupsManager.java` in `target/generated-sources/proctor/org/example/proctor/`.
 
 ### Creating your initial test definition
 
