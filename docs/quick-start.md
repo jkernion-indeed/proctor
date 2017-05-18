@@ -97,25 +97,24 @@ in `target/generated-sources/proctor/org/example/proctor/`.
 
 ### Creating your initial test definition
 
-In the test specification you created above, you set up 4 test buckets and one inactive bucket. Let's say you want to put 10% of your users in each test bucket. To grow the buckets later without moving users between buckets, you'll want to leave space between them, so your definition would be:
+In the test specification you created, you set up 4 test buckets and one inactive bucket. For this example, you'll put 10% of your users in each test bucket. Leaving space between each bucket allows you to increase them later without moving users between buckets. Your definition would be:
 
 {% include range_allocation_table.html buckets='altcolor1 inactive altcolor2 inactive altcolor3 inactive altcolor4' values="0 -1 1 -1 2 -1 3" ranges='10 20 10 20 10 20 10' %}
 
 
-
-Create a file called `proctor-definition.json` with this content:
+1. Create a file called `proctor-definition.json` with this content:
 
 {% gist youknowjack/6782462 proctor-definition.json %}
 
-Load this definition from the file system as your test matrix.
+2. Load this definition from the file system as your test matrix.
 
 ### Writing some code
 
-First, load your specification (from the classpath) and use it to load your test matrix.
+1. Load your specification (from the classpath) and use it to load your test matrix.
 
 {% gist youknowjack/6782938 LoadProctor.java %}
 
-Now that you have the Proctor object, you can use it to get the generated convenience class objects. You'll need to provide a user unique id, typically stored in a cookie for web applications, since this is a `USER` test.
+2. Use the Proctor object to get the generated convenience class objects. You'll need to provide a user unique id, typically stored in a cookie for web applications, since this is a `USER` test.
 
 
 {% gist youknowjack/6783121 GetProctorGroups.java %}
@@ -132,4 +131,4 @@ You can now use the ExampleGroups object in your Java code or your view template
 
 ### Testing your groups
 
-You can test the different buckets by appending the query param `prforceGroups`. For example, `?prforceGroups=bgcolortst1` would temporarily put you into bucket 1 of the `bgcolortst` test, and would set a `prforceGroups` cookie to keep you in that group for the length of your browser session.
+Test the different buckets by appending the query param `prforceGroups`. For example, `?prforceGroups=bgcolortst1` would temporarily put you into bucket 1 of the `bgcolortst` test, and would set a `prforceGroups` cookie to keep you in that group for the length of your browser session.
