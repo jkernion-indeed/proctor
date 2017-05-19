@@ -52,7 +52,7 @@ The `JsonProctorLoaderFactory` also supports loading the specification from the 
 <bean id="proctorLoader" factory-bean="loaderFactory" factory-method="getLoader" />
 ```
 
-##  load-verify loop
+##  Load-verify Loop
 The Proctor loader periodically refreshes the `test matrix` and performs the following steps during each attempt:
 
 1. Reads and parses the `test matrix` from a JSON file, classpath or URL depending on the implementation of `AbstractJsonProctorLoader`. Invalid JSON preventing the deserialization of the `test matrix` will result in a failed recent attempt.
