@@ -120,7 +120,7 @@ Depending on the outcome of the `load-verify loop`, the loader may be in one of 
 
 You can interpret the loader's state from a combination of the following _AbstractProctorLoader_ and _Proctor_ methods:
 
-| Method | Descripton |
+| Method | Description |
 | ------ | ---------- |
 | `boolean isLoadedDataSuccessfullyRecently()` | Returns flag whose value indicates whether the most recent refresh was successful. <br/>A `true` value indicates the loader is in the `LOADED-COMPLETE` or `LOADED-PARTIAL` state.  |
 | `Proctor loader.get()` | Returns the currently loaded Proctor instance. <br/>This method will return `null` when in the `UNLOADED` state. |
