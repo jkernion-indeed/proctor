@@ -34,13 +34,13 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 | `name` | The human-readable name for this bucket. By convention, this is the same as the name in the application's specification. |
 | `value` | The integer value for this bucket. This bucket must map to a bucket value of an application's specification. |
 | `description` | The human-readable description for the behavior this bucket defines. |
-| `payload.{payloadType}` | (optional) Payload data. The `payloadType` must be consistent with the [payload.type]({{ site.baseurl }}/docs/specification/#payloads) defined in the application's specification. |
+| `payload.{payloadType}` | (Optional) Payload data. The `payloadType` must be consistent with the [payload.type]({{ site.baseurl }}/docs/specification/#payloads) defined in the application's specification. |
 
 ## Allocation Schema
 
 | JSON Property | Description |
 | ------------- | ----------- |
-| `rule` | (optional) [rule]({{ site.baseurl }}/docs/test-rules/) for this allocation. |
+| `rule` | (Optional) [rule]({{ site.baseurl }}/docs/test-rules/) for this allocation. |
 | `ranges` | An array of `bucketValue`, `length` pairs describing the bucket distribution. |
 | `ranges[i].bucketValue` | The bucket value for this part of the distribution. |
 | `ranges[i].length` | The group size, `[0, 1.0]`, for the given bucket value. |
