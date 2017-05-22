@@ -228,12 +228,12 @@ http://www.example.com/path?prforceGroups=bgcolortst1
 
 The [Proctor loader]({{ site.baseurl }}/docs/loader) provides some state via `VarExport` variables.
 
-Proctor comes with several other servlets that can be used to display the proctor state. Typically these pages are restricted to internal developers either at the application or Apache level.
+Proctor comes with several other servlets that can be used to display the Proctor state. Typically these pages are restricted to internal developers either at the application or Apache level.
 
 <a name="AbstractShowTestGroupsController"></a>
 **AbstractShowTestGroupsController**: Spring controller that provides three routes:
 
-| url | page |
+| URL | Page |
 | --- | --- |
 | `/showGroups` | Displays the groups for the current request. |
 | `/showRandomGroups` | Displays a condensed version of the current `test matrix`. |
