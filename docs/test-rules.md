@@ -17,10 +17,10 @@ Test rules can use any variables in the specification's [providedContext]({{ sit
 Special constants set in a test definition can modify a test rule in the test-matrix. For example, if `__COUNTRIES` is set in `specialConstants`, the test-matrix will add `proctor:contains(__COUNTRIES, country)` to the rule for that test.
 The following two JSON files show the change made from the test definition to the test-matrix.
 
-Example Test Definition
+Example Test Definition:
 {%gist chriscolon/eb01453d5b5fcae7d655 2-ExampleTestSpecialConstants.json %}
 
-Example Test Matrix With Modified Rule
+Example Test Matrix With Modified Rule:
 {%gist chriscolon/3fd535a0716dbed9055c 2-ExampleTestMatrixModifiedRule.json %}
 
 
@@ -43,8 +43,8 @@ Test rules may take advantage of the two namespace function libraries available 
 
 
 ### Extending Default Namespace Function Libraries
-To add to the default namespace function libraries, Proctor provides
-users with a static function that generates a [LibraryFunctionMapperBuilder](https://github.com/indeedeng/proctor/tree/master/proctor-common/src/main/java/com/indeed/proctor/common/el/LibraryFunctionMapperBuilder.java)
+
+To add to the default namespace function libraries, Proctor provides users with a static function that generates a [LibraryFunctionMapperBuilder](https://github.com/indeedeng/proctor/tree/master/proctor-common/src/main/java/com/indeed/proctor/common/el/LibraryFunctionMapperBuilder.java)
 that contains the default `fn` and `proctor` namespaces. Add the namespace and class to this builder and build.
 Building will return a FunctionMapper containing the default namespaces as well as any that were added, as shown in the following code example.
 
