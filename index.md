@@ -14,7 +14,7 @@ For more details, check out the following blog posts:
 
 - [Using Proctor for A/B Testing from a Non-Java Platform](http://engineering.indeed.com/blog/2014/09/proctor-pipet-ab-testing-service/)
 
-Source: https://github.com/indeedeng/proctor
+Source: [https://github.com/indeedeng/proctor](https://github.com/indeedeng/proctor)
 
 # Features
 - Consistent tests across multiple applications, services and tools
@@ -30,7 +30,7 @@ Source: https://github.com/indeedeng/proctor
 Read the [Quick Start]({{ site.baseurl }}/docs/quick-start) guide to start running A/B test using Proctor.
 
 # Example
-https://github.com/indeedeng/proctor-demo
+[https://github.com/indeedeng/proctor-demo](https://github.com/indeedeng/proctor-demo)
 
 # Discussion
 Ask and answer questions in our Q&A forum for Proctor: [indeedeng-proctor-users](https://groups.google.com/forum/#!categories/indeedeng-proctor-users)
