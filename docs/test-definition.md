@@ -27,7 +27,7 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 | `buckets` | An array of `buckets` for this test. |
 | `allocations` | An array of `allocations` for this test. |
 
-## Bucket schema
+## Bucket Schema
 
 | JSON Property | Description |
 | ------------- | ----------- |
@@ -36,7 +36,7 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 | `description` | The human-readable description for the behavior this bucket defines. |
 | `payload.{payloadType}` | (optional) Payload data. The `payloadType` must be consistent with the [payload.type]({{ site.baseurl }}/docs/specification/#payloads) defined in the application's specification. |
 
-## Allocation schema
+## Allocation Schema
 
 | JSON Property | Description |
 | ------------- | ----------- |
@@ -47,7 +47,7 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 
 
 
-### Example: single allocation
+### Example: Single Allocation
 
 | Property | Value |
 | -------- | ----- |
@@ -57,15 +57,11 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 | `constants` | `{}` |
 | `allocations` | 1 allocation |
 
-| Rule | Allocation |
-| ---- | ---------- |
-| <code>Default (<code>rule = null</code>)</code> | {% include range_allocation_table.html buckets='altcolor1 inactive altcolor2' values="0 -1 1" ranges='25 50 25' %} |
-
 <table>
   <thead>
     <tr>
-      <th>rule</th>
-      <th>allocation</th>
+      <th>Rule</th>
+      <th>Allocation</th>
     </tr>
   </thead>
   <tbody>
@@ -83,7 +79,7 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 {% gist parker/3bb0e94b9b238b48429f 1-definition.json %}
 
 
-### Example: multiple allocations with rules
+### Example: Multiple Allocations with Rules
 
 | Property | Value |
 | -------- | ----- |
@@ -96,8 +92,8 @@ The test definition describes a test's buckets, allocations, eligibility rules, 
 <table>
   <thead>
     <tr>
-      <th>rule</th>
-      <th>allocation</th>
+      <th>Rule</th>
+      <th>Allocation</th>
     </tr>
   </thead>
   <tbody>
