@@ -9,7 +9,9 @@ kramdown:
  input: GFM
  auto_ids: true
  hard_wrap: false
- syntax_highlighter: rouge
+ syntax_highlighter:
+   syntax_highlighter_opts: 
+     disable: true
  gems:
   - jekyll-gist
 
