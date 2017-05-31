@@ -20,5 +20,3 @@ baseurl: "https://jkernion-indeed.github.io/proctor"
 
 relative_permalinks: false
 # permalinks are relative to their parent folder
-
-exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile.rb', 'README.md', 'proctor-parent.iml', 'proctor-ant-plugin', 'proctor-builder', 'proctor-codegen', 'proctor-codegen-test', 'proctor-common', 'proctor-consumer', 'proctor-maven-plugin', 'proctor-store', 'proctor-store-svn']
