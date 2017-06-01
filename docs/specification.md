@@ -9,7 +9,7 @@ The Proctor specification is a JSON file that describes the interface between a 
 
 The [code generator][Codegen] uses the specification's filename, path, and contents, so the information should be meaningful for your application.
 
-```bash
+<pre><code>
 # Example application
 app: ToyStore
 specification: ToyStoreGroups.json
@@ -26,7 +26,7 @@ specification: ToyStoreGroups.json
 ├── src
 |   ├── resources
 |       ├── org/your/organization/app/store/ToyStoreGroups.json
-```
+</code></pre>
 
 or for split specifications:
 
@@ -141,7 +141,7 @@ Proctor supports 6 types of payloads:
 
 The values for each bucket's payload are specified in the test-definition (view [complete test definition](https://gist.github.com/parker/3bb0e94b9b238b48429f#file-1-definition-json))
 
-```javascript
+<pre><code>
 {
   ...
   "buckets" : [ {
@@ -162,17 +162,17 @@ The values for each bucket's payload are specified in the test-definition (view 
   }
   ...
 }
-```
+</code></pre>
 
 ### <a name="payload-validator"></a>Payload Validator (Optional)
 An application can optionally define a `payload.validator` string in its specification. Similar to eligibility rules, this string is a boolean expression that should return `true` if a payload value is valid. During the test-matrix load-and-validate phase, each bucket's payload will be checked for compatibility using this expression. If no validator is provided, all payload values (of the correct type) will be considered valid.
 
-```javascript
+<pre><code>
 "payload": {
   "type": "stringValue",
   "validator": "${fn:startsWith(value, '#') && fn:length(value) == 7}"
 }
-```
+</code></pre>
 
 The validator from [the above example](https://gist.github.com/parker/3bb0e94b9b238b48429f#file-1-exampleGroups-payload.json) enforces that each payload, referenced by `value` in expression, starts with "#" and is 7 characters long. such as '#000000'. Unlike *eligibility rules* and *allocation rules*, the only available variable is `value`, the payload value. The specification context variables and test-constants are **NOT** available in the validator expression.
 
@@ -181,7 +181,7 @@ An application should always provide a default payload value in code and be resi
 ## Multiple Tests
 Multiple tests can be enumerated in an application's test specification by adding another entry to the `tests` map.
 
-```javascript
+<pre><code>
 {
     "tests" : {
         // Using a proctor test as a feature flag
@@ -194,7 +194,7 @@ Multiple tests can be enumerated in an application's test specification by addin
         "country" : "String"
     }
 }
-```
+</code></pre>
 
 ## Split Specifications
 A split specification (as opposed to a single large specification) can be used as documented above and on [the Code Generation](../codegen) page. The format of these split specifications with a test similar to the **Multiple Tests** example would look like this:
@@ -202,32 +202,32 @@ A split specification (as opposed to a single large specification) can be used a
 
 `featureA.json`
 
-```javascript
+<pre><code>
 {
     // Using a proctor test as a feature flag
      "buckets" : {"inactive": -1, "disabled":0, "enabled":1},
      "fallbackValue" : -1
 }
-```
+</code></pre>
 
 `layouttst.json`
 
-```javascript
+<pre><code>
 {
     // horizontal/vertical/reverse layout test
     "buckets" : {"inactive": -1, "horizontal":0, "vertical":1, "reverse":2},
     "fallbackValue" : -1
 }
-```
+</code></pre>
 
 `providedcontext.json`
 
-```javascript
+<pre><code>
 {
     "lang": "String",
     "country" : "String"
 }
-```
+</code></pre>
 
 
 
