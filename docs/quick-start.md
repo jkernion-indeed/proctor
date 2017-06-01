@@ -11,7 +11,7 @@ This section guides you through the process of getting Proctor and implementing 
 
 Add these dependencies to your pom.xml:
 
-<pre><code>
+```xml
     <dependencies>
         <!-- use this dependency only if your environment is providing tomcat libraries
         <dependency>
@@ -47,7 +47,7 @@ Add these dependencies to your pom.xml:
             <version>1.0</version>
         </dependency>
     </dependencies>
-</code></pre>
+```
 
 ### Building from source (using maven)
 
@@ -71,7 +71,7 @@ The result is a single test `bgcolortst` with five buckets: `inactive, altcolor1
 
 1. Edit your `pom.xml` to enable the Proctor maven plugin:
 
-<pre><code>
+```xml
     <build>
         <plugins>
           <!-- add this plugin definition -->
@@ -90,7 +90,7 @@ The result is a single test `bgcolortst` with five buckets: `inactive, altcolor1
           </plugin>
         </plugins>
     </build>
-</code></pre>
+```
 
 2. To generate the Proctor convenience classes, run `mvn proctor:generate`, which creates `ExampleGroups.java` and `ExampleGroupsManager.java` in `target/generated-sources/proctor/org/example/proctor/`.
 
