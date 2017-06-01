@@ -48,7 +48,7 @@ To add to the default namespace function libraries, Proctor provides users with 
 that contains the default `fn` and `proctor` namespaces. Add the namespace and class to this builder and build.
 Building will return a FunctionMapper containing the default namespaces as well as any that were added, as shown in the following code example.
 
-```java
+<pre><code>
 final JsonProctorLoaderFactory factory = new JsonProctorLoaderFactory();
 // Loads the specification from the classpath resource
 factory.setSpecificationResource("classpath:/org/your/company/app/ExampleGroups.json");
@@ -70,7 +70,7 @@ final FunctionMapper extendedFunctionMapper = RuleEvaluator.defaultFunctionMappe
 factory.setFunctionMapper(myFunctionMapper); // or pass extendedFunctionMapper
 
 final AbstractJsonProctorLoader loader = factory.getLoader();
-```
+</code></pre>
 
 
 

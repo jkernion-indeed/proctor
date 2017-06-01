@@ -8,7 +8,7 @@ The builder converts the multi-file representation of the test-matrix and genera
 
 The multi-file format of the test-matrix has the following schema underneath a `root-directory`:
 
-```bash
+<pre><code>
 .
 ├── test-definitions
 |   ├── appfeatureatst
@@ -17,14 +17,14 @@ The multi-file format of the test-matrix has the following schema underneath a `
 |       ├── definition.json
 |   ├── otherappfeaturetst
 |       ├── definition.json
-```
+</code></pre>
 
 ## Usage
 {% include maven_dependency.md artifact="proctor-builder" %}
 
-```bash
+<pre><code>
 $ java -cp xxx com.indeed.proctor.builder.LocalProctorBuilder -i /path/to/root-directory -o build/proctor --author $USER
-```
+</code></pre>
 
 ## Command-line arguments
 

@@ -31,7 +31,7 @@ specification: ToyStoreGroups.json
 or for split specifications:
 
 
-```bash
+<pre><code>
 
 # File structure if using proctor-maven-plugin
 .
@@ -53,7 +53,7 @@ or for split specifications:
 |           ├── secondtest.json
 |           ├── thirdtest.json
 |           ├── providedcontext.json
-```
+</code></pre>
 
   In the above code, `providedcontext.json` is a required file and the other _part_ specifications contain single-test specifications. The names of the test are determined from the form `testname`.json.
 ###Ant

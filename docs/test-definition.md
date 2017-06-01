@@ -6,12 +6,12 @@ permalink: /docs/test-definition/
 
 The test definition describes a test's buckets, allocations, eligibility rules, allocations and constants. Each test's `definition.json` file should be under revision control.
 
-```bash
+<pre><code>
 .
 ├── test-definitions
 |   ├── your-test-name
 |       ├── definition.json
-```
+</code></pre>
 
 
 ## JSON Schema

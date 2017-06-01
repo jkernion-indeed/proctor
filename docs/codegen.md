@@ -17,7 +17,7 @@ Provides an interface for determining the groups for a user based on the provide
 
 Consider the following [ExampleGroups.json](https://gist.github.com/parker/3bb0e94b9b238b48429f#file-2-examplegroups-context-json) specification
 
-```json
+<pre><code>
 {
     "tests" : {
         "bgcolortst": {
@@ -38,12 +38,12 @@ Consider the following [ExampleGroups.json](https://gist.github.com/parker/3bb0e
         "ua": "com.indeed.example.UserAgent"
     }
 }
-```
+</code></pre>
 
 
 ### Generated ExampleGroupsManager.java
 
-```java
+<pre><code>
 package com.indeed.example;
 
 public class ExampleGroupsManager extends AbstractGroupsManager {
@@ -66,7 +66,7 @@ public class ExampleGroupsManager extends AbstractGroupsManager {
                                         final String language,
                                         final com.indeed.example.UserAgent ua);
 }
-```
+</code></pre>
 Key points:
 
 - The `Supplier<Proctor> proctorSource` constructor argument should provide a loaded Proctor instance. Typically, this is an implementation of `AbstractProctorLoader`. See [proctor-loader][Loader] for details.
@@ -78,7 +78,7 @@ Key points:
 
 ### Generated ExampleGroups.java
 
-```java
+<pre><code>
 package com.indeed.example;
 
 public class ExampleGroups extends AbstractGroups {
@@ -109,7 +109,7 @@ public class ExampleGroups extends AbstractGroups {
     public boolean isBgcolortstAltcolor3();
     public boolean isBgcolortstAltcolor4();
 }
-```
+</code></pre>
 
 Key points
 
@@ -119,7 +119,7 @@ Key points
 
 ### Generated ExampleGroups.js
 
-```javascript
+<pre><code>
 define('com.indeed.example.groups', [], function() {
 
   var ExampleGroups_ = function(opt_values) {
@@ -177,7 +177,7 @@ define('com.indeed.example.groups', [], function() {
   };
 });
 
-```
+</code></pre>
 
 Key points
 
@@ -197,7 +197,7 @@ The `proctor-maven-plugin` plugin makes it easy to incorporate Java code generat
 
 The following `plugin` element should be added to your application's `pom.xml` ([complete pom.xml example example](https://gist.github.com/parker/c0ea111ff343f58346e0#file-pom-xml)):
 
-```xml
+<pre><code>
 ...
   <plugin>
     <groupId>com.indeed</groupId>
@@ -213,17 +213,17 @@ The following `plugin` element should be added to your application's `pom.xml` (
     </executions>
   </plugin>
 ...
-```
+</code></pre>
 
 The `generate` goal is executed in the standard compile and build lifecycle. To man manually run the code generator, run the following in a terminal:
 
-```bash
+<pre><code>
 $ mvn com.indeed:proctor-maven-plugin:generate
-```
+</code></pre>
 
 By convention, the plugin determines the Java package and classname from the specification's path and filename, respectively:
 
-```bash
+<pre><code>
 .
 ├── src
 |   ├── main
@@ -232,17 +232,17 @@ By convention, the plugin determines the Java package and classname from the spe
 |   ├── test
 |       ├── proctor
 |           ├── org/your/company/app/ExampleGroups.json
-```
+</code></pre>
 
-```bash
+<pre><code>
 src/main/org/your/company/app/ExampleGroups.json
     => org.your.company.app.ExampleGroups.java
     => org.your.company.app.ExampleGroupsManager.java
-```
+</code></pre>
 
 Alternatively, for a split specification, the format would look like this:
 
-```bash
+<pre><code>
 .
 ├── src
 |   ├── main
@@ -257,11 +257,11 @@ Alternatively, for a split specification, the format would look like this:
 |           ├── examplefirsttest.json
 |           ├── examplesecondtest.json
 |           ├── examplethirdtest.json
-```
+</code></pre>
 
 The generated file is sent to target/generated-resources/proctor and must be added separately in the pom.xml for inclusion in classpath resources:
 
-```bash
+<pre><code>
   <build>
    ...
       <resources>
@@ -270,7 +270,7 @@ The generated file is sent to target/generated-resources/proctor and must be add
           </resource>
       </resources>
   </build>
-```
+</code></pre>
 
 ## <a name="ant"></a>proctor-ant-plugin
 The `proctor-ant-plugin` project provides two ant tasks that can be invoked during ant's build process: `com.indeed.proctor.consumer.gen.ant.TestGroupsJavaGeneratorTask` is used to generate Java code, `com.indeed.proctor.consumer.gen.ant.TestGroupsJavascriptGeneratorTask` is used to generate JavaScript code
@@ -278,7 +278,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
 
 1. Add a _proctor_ configuration and _proctor-ant-plugin_ dependency to your application's _ivy.xml_
 
-  ```xml
+  <pre><code>
     <configurations defaultconfmapping="default->default(master)">
         <conf name="compile" extends="default"/>
         <conf name="proctor" extends="compile"/>
@@ -288,7 +288,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
         <dependency org="com.indeed" name="proctor-ant-plugin"
                     rev="1.0-SNAPSHOT" conf="proctor->default" />
     </dependencies>
-  ```
+  </code></pre>
 
 2. Create specification in your application's `src/resources` directory:
 
@@ -301,7 +301,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
 
   Alternatively, for a split specification, the format would look like this:
 
-  ```bash
+  <pre><code>
   .
   ├── src
   |   ├── resources
@@ -310,14 +310,14 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
   |           ├── examplefirsttest.json
   |           ├── examplesecondtest.json
   |           ├── examplethirdtest.json
-  ```
+  </code></pre>
 
 
 
 
 3. Add a classpath ref for the _proctor_ configuration and define a ant target for invoking the task. Unlike the maven plugin, the package, groups class name, and groups manager class name must be specified in the ant task. Typically, the _compile_ target depends on the _proctor-generate_ target and the generated-code (in `generated-src`) is not committed to version-control.
 
-  ```xml
+  <pre><code>
     <target name="init" description="Resolve dependencies and set classpaths">
         ...
         <ivy:cachepath pathid="proctor.path"  conf="proctor"/>
@@ -353,13 +353,13 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
     <target name="makeweb" depends="proctor-generate-js">
           ...
     </target>
-  ```
+  </code></pre>
 
   See [example ivy.xml and build.xml gist](https://gist.github.com/parker/9eebd91fcb57ea416c6a) for a complete example.
 
   However, for a split specification the _proctor-gen_ task must be called with the input parameter as the containing folder of the JSONs, and with the extra parameter `specificationOutput` as the output:
 
-  ```xml
+  <pre><code>
         <proctor-gen
                   input="src/resources/org/your/company/app"
                   target="generated-src/java"
@@ -367,7 +367,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
                   packageName="org.your.company.app"
                   groupsClass="ExampleGroups"
                   groupsManagerClass="ExampleGroupsManager"/>
-  ```
+  </code></pre>
 
 
 [Loader]: {{ site.baseurl }}/docs/loader

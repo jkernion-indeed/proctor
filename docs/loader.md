@@ -19,18 +19,18 @@ Proctor is bundled with several implementations of `AbstractProctorLoader` that 
 
 Java example:
 
-```java
+<pre><code>
 final JsonProctorLoaderFactory factory = new JsonProctorLoaderFactory();
 // Loads the specification from the classpath resource
 factory.setSpecificationResource("classpath:/org/your/company/app/ExampleGroups.json");
 // Loads the test matrix from a file
 factory.setFilePath("/var/local/proctor/test-matrix.json");
 final AbstractJsonProctorLoader loader = factory.getLoader();
-```
+</code></pre>
 
 Spring configuration XML example:
 
-```xml
+<pre><code>
 <bean id="loaderFactory" class="com.indeed.proctor.common.JsonProctorLoaderFactory">
     <!-- Loads the specification from the classpath resource -->
     <property name="specificationResource" value="classpath:/org/your/company/app/ExampleGroups.json" />
@@ -38,11 +38,11 @@ Spring configuration XML example:
     <property name="classResourcePath" value="/var/local/proctor/test-matrix.json" />
 </bean>
 <bean id="proctorLoader" factory-bean="loaderFactory" factory-method="getLoader" />
-```
+</code></pre>
 
 The `JsonProctorLoaderFactory` also supports loading the specification from the file system and test-matrix from the classpath. Both uses are rare but can be useful if you want to bundle the test-matrix with your application and don't need to update the test-matrix without deploying new code.
 
-```xml
+<pre><code>
 <bean id="loaderFactory" class="com.indeed.proctor.common.JsonProctorLoaderFactory">
     <!-- Load the specification resource from the file-system (not common) -->
     <property name="specificationResource" value="WEB-INF/org/your/company/app/ExampleGroups.json" />
@@ -50,7 +50,7 @@ The `JsonProctorLoaderFactory` also supports loading the specification from the 
     <property name="classResourcePath" value="/proctor/test-matrix.json" />
 </bean>
 <bean id="proctorLoader" factory-bean="loaderFactory" factory-method="getLoader" />
-```
+</code></pre>
 
 ##  Load-verify Loop
 The Proctor loader periodically refreshes the `test matrix` and performs the following steps during each attempt:
@@ -75,17 +75,17 @@ The following examples show how to schedule the loader to refresh every 30 secon
 
 Java example:
 
-```java
+<pre><code>
 ...
 final AbstractJsonProctorLoader loader = factory.getLoader();
 
 final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 scheduledExecutorService.scheduleWithFixedDelay(loader, 0, 30, TimeUnit.SECONDS);
-```
+</code></pre>
 
 Spring XML example:
 
-```xml
+<pre><code>
 ...
 <bean id="proctorLoader" factory-bean="loaderFactory" factory-method="getLoader" />
 <bean id="scheduledExecutorService" class="org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean" lazy-init="false">
@@ -105,7 +105,7 @@ Spring XML example:
         </list>
     </property>
 </bean>
-```
+</code></pre>
 
 ## <a name="inspecting"></a>Inspecting the Loader State
 Depending on the outcome of the `load-verify loop`, the loader may be in one of these states:
@@ -127,7 +127,7 @@ You can interpret the loader's state from a combination of the following _Abstra
 | `ProctorLoadResult Proctor.getLoadResult()` | Returns a ProctorLoadResult instance describing the outcome of the most recent load. <br/> `ProctorLoadResult.hasInvalidTests` can be used to differentiate between the `LOADED-COMPLETE` and `LOADED-PARTIAL` states. |
 
 
-```java
+<pre><code>
 private enum ProctorRefreshState {
   UNLOADED,LOADED_COMPLETE,LOADED_PARTIAL,LOADED_STALE;
 }
@@ -154,7 +154,7 @@ private ProctorRefreshState determineState(final AbstractProctorLoader loader) {
   }
   return state;
 }
-```
+</code></pre>
 
 ## Exporting the Loader State
 The `AbstractProctorLoader` extends [com.indeed.util.core.DataLoadingTimerTask][GithubUtil] and uses [VarExport][GithubUtilVarexport] to make its state available for debugging. The _com.indeed.util.varexport.servlet.ViewExportedVariablesServlet_ can be used to view the exported namespaces and variables ([example web.xml][proctor-demo-web.xml]).
