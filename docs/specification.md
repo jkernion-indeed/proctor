@@ -101,7 +101,7 @@ If an application had the following four variables:
 
 The test definition's `eligibility rules` and `allocation rules` can then reference the variables. The excerpt ([complete example](https://gist.github.com/parker/3bb0e94b9b238b48429f#file-2-definition-json)) below illustrates how a test-definition can reference the `country` and `ua` (UserAgent) variables to build targeted tests. Refer to the [Test Definition](../test-definition) page for a complete guide to the rule syntax.
 
-```javascript
+<pre><code>
 {
   "testType" : "USER",
   "constants" : {
@@ -121,7 +121,7 @@ The test definition's `eligibility rules` and `allocation rules` can then refere
   }
   ...
 }
-```
+</code></pre>
 
 ## <a name="payloads"></a>Payloads
 Arbitrary data can be associated with each test bucket and delivered to your applications via the test-matrix. An application's specification can indicate if it expects a given test to have payloads by specifying the `payload.type`:
