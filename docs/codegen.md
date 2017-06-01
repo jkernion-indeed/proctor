@@ -17,7 +17,7 @@ Provides an interface for determining the groups for a user based on the provide
 
 Consider the following [ExampleGroups.json](https://gist.github.com/parker/3bb0e94b9b238b48429f#file-2-examplegroups-context-json) specification
 
-~~~javascript
+```
 {
     "tests" : {
         "bgcolortst": {
@@ -38,7 +38,8 @@ Consider the following [ExampleGroups.json](https://gist.github.com/parker/3bb0e
         "ua": "com.indeed.example.UserAgent"
     }
 }
-~~~
+```
+{: .language-javascript}
 
 ### Generated ExampleGroupsManager.java
 
