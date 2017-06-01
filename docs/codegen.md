@@ -62,7 +62,8 @@ public class ExampleGroupsManager extends AbstractGroupsManager {
                                         final boolean loggedIn,
                                         final String language,
                                         final com.indeed.example.UserAgent ua);
-}</code></pre>
+}
+</code></pre>
 
 Key points:
 
