@@ -41,7 +41,8 @@ Consider the following [ExampleGroups.json](https://gist.github.com/parker/3bb0e
 
 ### Generated ExampleGroupsManager.java
 
-<pre><code>package com.indeed.example;
+```java
+package com.indeed.example;
 
 public class ExampleGroupsManager extends AbstractGroupsManager {
   public ExampleGroupsManager(final Supplier<Proctor> proctorSource) {
@@ -63,7 +64,7 @@ public class ExampleGroupsManager extends AbstractGroupsManager {
                                         final String language,
                                         final com.indeed.example.UserAgent ua);
 }
-</code></pre>
+```
 
 Key points:
 
@@ -76,7 +77,8 @@ Key points:
 
 ### Generated ExampleGroups.java
 
-<pre><code>package com.indeed.example;
+```java
+package com.indeed.example;
 
 public class ExampleGroups extends AbstractGroups {
     public static final ExampleGroups EMPTY = new ExampleGroups(ProctorResult.EMPTY);
@@ -105,7 +107,8 @@ public class ExampleGroups extends AbstractGroups {
     public boolean isBgcolortstAltcolor2();
     public boolean isBgcolortstAltcolor3();
     public boolean isBgcolortstAltcolor4();
-}</code></pre>
+}
+```
 
 Key points
 
@@ -190,7 +193,8 @@ The `proctor-maven-plugin` plugin makes it easy to incorporate Java code generat
 
 The following `plugin` element should be added to your application's `pom.xml` ([complete pom.xml example example](https://gist.github.com/parker/c0ea111ff343f58346e0#file-pom-xml)):
 
-<pre><code>...
+```xml
+...
   <plugin>
     <groupId>com.indeed</groupId>
     <artifactId>proctor-maven-plugin</artifactId>
@@ -204,7 +208,8 @@ The following `plugin` element should be added to your application's `pom.xml` (
       </execution>
     </executions>
   </plugin>
-...</code></pre>
+...
+```
 
 The `generate` goal is executed in the standard compile and build lifecycle. To man manually run the code generator, run the following in a terminal:
 
