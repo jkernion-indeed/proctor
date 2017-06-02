@@ -213,9 +213,7 @@ The following `plugin` element should be added to your application's `pom.xml` (
 
 The `generate` goal is executed in the standard compile and build lifecycle. To man manually run the code generator, run the following in a terminal:
 
-<pre><code>
-$ mvn com.indeed:proctor-maven-plugin:generate
-</code></pre>
+<pre><code>$ mvn com.indeed:proctor-maven-plugin:generate</code></pre>
 
 By convention, the plugin determines the Java package and classname from the specification's path and filename, respectively:
 
@@ -282,16 +280,14 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
 
 2. Create specification in your application's `src/resources` directory:
 
-  <pre><code>
-    .
+  <pre><code>    .
     ├── src
     |   ├── resources
     |       ├── org/your/company/app/ExampleGroups.json</code></pre>
 
   Alternatively, for a split specification, the format would look like this:
 
-  <pre><code>
-  .
+  <pre><code>  .
   ├── src
   |   ├── resources
   |       ├── org/your/company/app
