@@ -14,8 +14,7 @@ This page expands on the Proctor [quick start guide](../quick-start) and provide
 - test-matrix compiled by the [Proctor builder]({{ site.baseurl }}/docs/builder)
 - Create an instance of the _AbstractJsonProctorLoader_, schedule it to refresh every 30 seconds, and create an instance of `ExampleGroupsManager` using the following loader:
 
-  <pre><code>
-final JsonProctorLoaderFactory factory = new JsonProctorLoaderFactory();
+  <pre><code>final JsonProctorLoaderFactory factory = new JsonProctorLoaderFactory();
 // Loads the specification from the classpath resource
 factory.setSpecificationResource("classpath:/org/example/proctor/ExampleGroups.json");
 // Loads the test matrix from a file
@@ -25,22 +24,19 @@ final AbstractJsonProctorLoader loader = factory.getLoader();
 final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
 scheduledExecutorService.scheduleWithFixedDelay(loader, 0, 30, TimeUnit.SECONDS);
 // Create groups manager for application-code usage
-final ExampleGroupsManager exampleGroupsManager = new ExampleGroupsManager(loader);
-  </code></pre>
+final ExampleGroupsManager exampleGroupsManager = new ExampleGroupsManager(loader);  </code></pre>
 
 ## How to Determine Groups
 
 When initializing an application's AbstractGroups class, such as _ExampleGroups_, a best practice is to use the generated AbstractGroupsManager API, such as _ExampleGroupsManager_, instead of using `Proctor` directly.
 
-<pre><code>
-public ProctorResult determineBuckets(Identifiers identifiers
+<pre><code>public ProctorResult determineBuckets(Identifiers identifiers
                                       [,context-variable_1 ... ,context-variable_N]) { ... }
 public ProctorResult determineBuckets(HttpServletRequest request,
                                       HttpServletResponse response,
                                       boolean allowForceGroups,
                                       Identifiers identifiers
-                                      [,context-variable_1 ... ,context-variable_N]) { ... }
-</code></pre>
+                                      [,context-variable_1 ... ,context-variable_N]) { ... }</code></pre>
 
 The generated AbstractGroupsManager handles several things:
 
@@ -111,27 +107,23 @@ For example, you're showing an experimental design to 10% of your users. The rem
 
 When inactive and control users experience the same behavior, the following code correctly displays the new feature to the test group.
 
-<pre><code>
-if(groups.isFeatureTest()) {
+<pre><code>if(groups.isFeatureTest()) {
   // do test
 } else {
   // fall through for "control" and "inactive"
-}
-</code></pre>
+}</code></pre>
 
 However, there are situations where `control != inactive`.
 
 For example, you might decide to integrate with google-analytics help to track your tests by setting a custom variable. Users in the `control` and `test` buckets should include a unique GA variable value so their traffic can be segmented in google-analytics. The `inactive` users will not get a custom variable. Your application code should explicitly handle the `test` and `control` buckets separate from the `inactive` users.
 
-<pre><code>
-if(groups.isFeatureTest()) {
+<pre><code>if(groups.isFeatureTest()) {
   // do test
 } else if(groups.isFeatureControl()) {
   // do control
 } else {
   // fall through for "inactive"
-}
-</code></pre>
+}</code></pre>
 
 
 In general:
@@ -146,14 +138,13 @@ After you use your generated Java code to determine buckets for each of your tes
 
 A method in `AbstractGroups` will create an array of group allocations and payload values. Pass it an array of `Test` enums from `Test.values()`.
 
-<pre><code>
+```java
 public <E extends Test> List<List<Object>> getJavaScriptConfig(final E[] tests);
-</code></pre>
+```
 
 You can serialize this result to JSON or write it out to the page in JavaScript. Then `init()` your groups and use them as needed.
 
-<pre><code>
-    var proctor = require('com.indeed.example.groups');
+<pre><code>    var proctor = require('com.indeed.example.groups');
     proctor.init(values);
 
     ...
@@ -162,16 +153,14 @@ You can serialize this result to JSON or write it out to the page in JavaScript.
         //do test
     }else {
         //fall through for "control" or "inactive"
-    }
-</code></pre>
+    }</code></pre>
 
 ## How to Record Group Assignment
 The `AbstractGroups` interface provides a `toString()` method that contains a comma-delimited list of active groups. Only tests with non-negative bucket value will be logged. This follows the convention that the `inactive` fallback bucket has a value of `-1` and doesn't contain test behavior. The string representation for each group is `[test_name][bucket_value]`.
 
 Consider the following specification:
 
-<pre><code>
-{
+<pre><code>{
     "tests" : {
         // Test different single-page implementations (none, html5 history, hash-bang )
         "historytst": { "buckets" : {
@@ -182,8 +171,7 @@ Consider the following specification:
           "inactive": -1, "singlepage":0, "accordian":1, "multipage":2, "tabs":3
         }, "fallbackValue" : -1 }
     }
-}
-</code></pre>
+}</code></pre>
 
 | historytst | signuptst | Groups.toString() |
 | ---------- | --------- | ----------------- |
@@ -198,8 +186,7 @@ Feel free to extend the generated Groups classes to provide application-specific
 
 You can add information to the groups string by overriding `appendTestGroups` method and `isEmpty` methods.
 
-<pre><code>
-/**
+<pre><code>/**
  * Return a value indicating if the groups are empty
  * and should be represented by an empty string
  */
@@ -209,15 +196,12 @@ public boolean isEmpty() { ... }
   * group names. the separator should be appended for each group added
   * to the string builder
   */
-public void appendTestGroups(final StringBuilder sb, char separator) { ... }
-</code></pre>
+public void appendTestGroups(final StringBuilder sb, char separator) { ... }</code></pre>
 
 ## <a name="forceGroups"></a>Forcing Groups
 Groups can be forced by using a _prforceGroups_ url parameter. Its value should be a comma-delimited list of group strings identical to the list used in the `Groups.toString()` method documented above. The following example forces the `altcolor2` bucket (value 1) for the `bgcolortst` in the example groups:
 
-<pre><code>
-http://www.example.com/path?prforceGroups=bgcolortst1
-</code></pre>
+<pre><code>http://www.example.com/path?prforceGroups=bgcolortst1</code></pre>
 
 - When forcing groups, a test's `eligibility rules` and `allocation rules` are ignored.
 - Groups that are not forced will continue to be allocated.
@@ -240,8 +224,7 @@ Proctor comes with several other servlets that can be used to display the Procto
 | `/showTestMatrix` | Displays a JSON `test matrix` containing only the tests in the application's specification. |
 
 
-<pre><code>
-// Routes the controller to /proctor
+<pre><code>// Routes the controller to /proctor
 // Valid URLS: /proctor/showGroups, /proctor/showRandomGroups, /proctor/showTestMatrix
 @RequestMapping(value = "/proctor", method = RequestMethod.GET)
 public ExampleShowTestGroupsController extends AbstractShowTestGroupsController {
@@ -255,15 +238,14 @@ public ExampleShowTestGroupsController extends AbstractShowTestGroupsController 
     // Application restriction on who can see these internal pages
     return true;
   }
-}
-</code></pre>
+}</code></pre>
 
 <a name="ViewProctorSpecificationServlet"></a>
 **ViewProctorSpecificationServlet**: Servlet used to display the application's specification
 
 web.xml:
 
-<pre><code>
+```xml
 <servlet>
     <servlet-name>ViewProctorSpecificationServlet</servlet-name>
     <servlet-class>com.indeed.proctor.consumer.ViewProctorSpecificationServlet</servlet-class>
@@ -277,4 +259,4 @@ web.xml:
     <servlet-name>ViewProctorSpecificationServlet</servlet-name>
     <url-pattern>/proctor/specification</url-pattern>
 </servlet-mapping>
-</code></pre>
+```

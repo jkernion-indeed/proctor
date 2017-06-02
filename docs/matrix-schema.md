@@ -27,8 +27,7 @@ In its uncompiled format, the test-matrix is stored as a single file per [test-d
 In the _test-definitions_ directory, each test must have a corresponding directory and _definition.json_ file.
 The directory name dictates the test name and the _definition.json_ file describes the buckets, allocations, and other attributes of the test definition.
 
-<pre><code>
-.
+<pre><code>.
 ├── test-definitions
 |   ├── appfeatureatst
 |       ├── definition.json
