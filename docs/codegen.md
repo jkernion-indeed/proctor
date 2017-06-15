@@ -280,26 +280,26 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
 
 2. Create specification in your application's `src/resources` directory:
 
-  <pre><code>    .
+   <pre><code>    .
     ├── src
     |   ├── resources
     |       ├── org/your/company/app/ExampleGroups.json</code></pre>
 
-  Alternatively, for a split specification, the format would look like this:
+   Alternatively, for a split specification, the format would look like this:
 
-  <pre><code>  .
-  ├── src
-  |   ├── resources
-  |       ├── org/your/company/app
-  |           ├── providedcontext.json
-  |           ├── examplefirsttest.json
-  |           ├── examplesecondtest.json
-  |           ├── examplethirdtest.json</code></pre>
+   <pre><code>  .
+   ├── src
+   |   ├── resources
+   |       ├── org/your/company/app
+   |           ├── providedcontext.json
+   |           ├── examplefirsttest.json
+   |           ├── examplesecondtest.json
+   |           ├── examplethirdtest.json</code></pre>
 
 
 3. Add a classpath ref for the _proctor_ configuration and define a ant target for invoking the task. Unlike the maven plugin, the package, groups class name, and groups manager class name must be specified in the ant task. Typically, the _compile_ target depends on the _proctor-generate_ target and the generated-code (in `generated-src`) is not committed to version-control.
 
-  ```xml
+   ```xml
     <target name="init" description="Resolve dependencies and set classpaths">
         ...
         <ivy:cachepath pathid="proctor.path"  conf="proctor"/>
@@ -335,7 +335,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
     <target name="makeweb" depends="proctor-generate-js">
           ...
     </target>
-  ```
+   ```
 
   See [example ivy.xml and build.xml gist](https://gist.github.com/parker/9eebd91fcb57ea416c6a) for a complete example.
 
