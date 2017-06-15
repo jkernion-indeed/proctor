@@ -266,7 +266,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
 
 1. Add a _proctor_ configuration and _proctor-ant-plugin_ dependency to your application's _ivy.xml_
 
-  ```xml
+   ```xml
     <configurations defaultconfmapping="default->default(master)">
         <conf name="compile" extends="default"/>
         <conf name="proctor" extends="compile"/>
@@ -276,7 +276,7 @@ The `proctor-ant-plugin` project provides two ant tasks that can be invoked duri
         <dependency org="com.indeed" name="proctor-ant-plugin"
                     rev="1.0-SNAPSHOT" conf="proctor->default" />
     </dependencies>
-  ```
+   ```
 
 2. Create specification in your application's `src/resources` directory:
 
