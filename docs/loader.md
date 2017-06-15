@@ -56,13 +56,13 @@ The Proctor loader periodically refreshes the `test matrix` and performs the fol
 1. Reads and parses the `test matrix` from a JSON file, classpath or URL depending on the implementation of `AbstractJsonProctorLoader`. Invalid JSON preventing the deserialization of the `test matrix` will result in a failed recent attempt.
 2. Checks the `audit.version` of the new test-matrix against the `audit.version` of last successful refresh. If these values are equal, the attempt is finished and no further steps are executed.
 3. Validates each test in the `specification` against the corresponding `test-definition` in the `test matrix`:
-  1. A test-definition should be defined for each test. A matrix missing a test is invalid.
-  2. A test-definition allocating users to a bucket not defined in the specification is invalid. It's valid for the test-definition to define new buckets in its `buckets` field, but their group size should be 0% across all test allocations.
-  3. A test-definition must have valid payloads. If the application expects a test to have payloads, each bucket in the test-definition must have a payload of the correct type and pass the `payload-validator` expression. If an application doesn't expect a test to have payloads, no validation of their values is performed.
-  4. A test-definition's allocations each must sum to 1.0.
-  5. A test-definition must have exactly one allocation with a null or empty rule. This allocation must be the last allocation in the `allocations` array.
+   1. A test-definition should be defined for each test. A matrix missing a test is invalid.
+   2. A test-definition allocating users to a bucket not defined in the specification is invalid. It's valid for the test-definition to define new buckets in its `buckets` field, but their group size should be 0% across all test allocations.
+   3. A test-definition must have valid payloads. If the application expects a test to have payloads, each bucket in the test-definition must have a payload of the correct type and pass the `payload-validator` expression. If an application doesn't expect a test to have payloads, no validation of their values is performed.
+   4. A test-definition's allocations each must sum to 1.0.
+   5. A test-definition must have exactly one allocation with a null or empty rule. This allocation must be the last allocation in the `allocations` array.
 
-5. Creates a new `Proctor` instance containing the data from the loaded `test matrix`. The instance is considered the last successful test-matrix.
+4. Creates a new `Proctor` instance containing the data from the loaded `test matrix`. The instance is considered the last successful test-matrix.
 
 Refer to [Inspecting the Loader State](#inspecting) for details about determining whether the loader has recently refreshed successfully.
 

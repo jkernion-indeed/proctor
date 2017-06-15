@@ -71,7 +71,7 @@ The result is a single test `bgcolortst` with five buckets: `inactive, altcolor1
 
 1. Edit your `pom.xml` to enable the Proctor maven plugin:
 
-```xml
+    ```xml
     <build>
         <plugins>
           <!-- add this plugin definition -->
@@ -90,7 +90,7 @@ The result is a single test `bgcolortst` with five buckets: `inactive, altcolor1
           </plugin>
         </plugins>
     </build>
-```
+    ```
 
 2. To generate the Proctor convenience classes, run `mvn proctor:generate`, which creates `ExampleGroups.java` and `ExampleGroupsManager.java` in `target/generated-sources/proctor/org/example/proctor/`.
 
@@ -103,7 +103,7 @@ In the test specification you created, you set up 4 test buckets and one inactiv
 
 1. Create a file called `proctor-definition.json` with this content:
 
-{% gist youknowjack/6782462 proctor-definition.json %}
+   {% gist youknowjack/6782462 proctor-definition.json %}
 
 2. Load this definition from the file system as your test matrix.
 
@@ -111,12 +111,12 @@ In the test specification you created, you set up 4 test buckets and one inactiv
 
 1. Load your specification (from the classpath) and use it to load your test matrix.
 
-{% gist youknowjack/6782938 LoadProctor.java %}
+   {% gist youknowjack/6782938 LoadProctor.java %}
 
 2. Use the Proctor object to get the generated convenience class objects. You'll need to provide a user unique id, typically stored in a cookie for web applications, since this is a `USER` test.
 
 
-{% gist youknowjack/6783121 GetProctorGroups.java %}
+   {% gist youknowjack/6783121 GetProctorGroups.java %}
 
 You can now use the ExampleGroups object in your Java code or your view templates.
 

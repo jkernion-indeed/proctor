@@ -14,25 +14,25 @@ This page expands on the Proctor [quick start guide](../quick-start) and provide
 - test-matrix compiled by the [Proctor builder]({{ site.baseurl }}/docs/builder)
 - Create an instance of the _AbstractJsonProctorLoader_, schedule it to refresh every 30 seconds, and create an instance of `ExampleGroupsManager` using the following loader:
 
-  <pre><code>final JsonProctorLoaderFactory factory = new JsonProctorLoaderFactory();
-// Loads the specification from the classpath resource
-factory.setSpecificationResource("classpath:/org/example/proctor/ExampleGroups.json");
-// Loads the test matrix from a file
-factory.setFilePath("/var/local/proctor/test-matrix.json");
-final AbstractJsonProctorLoader loader = factory.getLoader();
-// schedule the loader to refresh every 30 seconds
-final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
-scheduledExecutorService.scheduleWithFixedDelay(loader, 0, 30, TimeUnit.SECONDS);
-// Create groups manager for application-code usage
-final ExampleGroupsManager exampleGroupsManager = new ExampleGroupsManager(loader);  </code></pre>
+    <pre><code>   final JsonProctorLoaderFactory factory = new JsonProctorLoaderFactory();
+   // Loads the specification from the classpath resource
+   factory.setSpecificationResource("classpath:/org/example/proctor/ExampleGroups.json");
+   // Loads the test matrix from a file
+   factory.setFilePath("/var/local/proctor/test-matrix.json");
+   final AbstractJsonProctorLoader loader = factory.getLoader();
+   // schedule the loader to refresh every 30 seconds
+   final ScheduledExecutorService scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();
+   scheduledExecutorService.scheduleWithFixedDelay(loader, 0, 30, TimeUnit.SECONDS);
+   // Create groups manager for application-code usage
+   final ExampleGroupsManager exampleGroupsManager = new ExampleGroupsManager(loader);  </code></pre>
 
 ## How to Determine Groups
 
 When initializing an application's AbstractGroups class, such as _ExampleGroups_, a best practice is to use the generated AbstractGroupsManager API, such as _ExampleGroupsManager_, instead of using `Proctor` directly.
 
-<pre><code>public ProctorResult determineBuckets(Identifiers identifiers
+<pre><code>   public ProctorResult determineBuckets(Identifiers identifiers
                                       [,context-variable_1 ... ,context-variable_N]) { ... }
-public ProctorResult determineBuckets(HttpServletRequest request,
+   public ProctorResult determineBuckets(HttpServletRequest request,
                                       HttpServletResponse response,
                                       boolean allowForceGroups,
                                       Identifiers identifiers
@@ -178,6 +178,7 @@ Consider the following specification:
 | inactive | inactive | "" |
 | nohistory | inactive | "historytst0" |
 | html5 | tabs | "historytst1,signuptst3" |
+
 
 Your application must decide how to log these groups and analyze the outcomes. Indeed logs all the groups on every requests and makes each test available in all analyses. In at least one situation, this has helped us identify and explain unexpected user behavior on pages not directly impacted by a test group's behavior.
 
